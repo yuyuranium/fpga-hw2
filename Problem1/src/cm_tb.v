@@ -16,10 +16,10 @@ module cm_tb;
   );
 
   initial begin
-    clk = 0;
+    clk = 1;
     color = 24'h7f1fff;
     rst = 1;
-    #15;
+    #10;
     rst = 0;
     #5000;
     $finish;
