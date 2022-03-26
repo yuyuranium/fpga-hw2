@@ -11,10 +11,13 @@ module color_mixer (
   output        timeout_o
 );
 
-  reg  [7:0] counter;
-  wire [7:0] r = color_i[23:16], g = color_i[15:8], b = color_i[7:0];
+  reg [7:0] counter;
 
-  assign rgb_pwm_o = {counter < r, counter < g, counter < b};
+  assign rgb_pwm_o = {
+    counter < color_i[23:16],
+    counter < color_i[15:8],
+    counter < color_i[7:0]
+  };
   assign timeout_o = &counter;
 
   always @(posedge clk_i or posedge rst_i) begin

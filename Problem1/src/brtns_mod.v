@@ -15,7 +15,7 @@ module brtns_mod (
 
   reg [4:0] counter;
 
-  assign on_pwm_o = counter < brtns_i;
+  assign on_pwm_o  = counter < brtns_i;
   assign timeout_o = &counter;
 
   always @(posedge clk_i or posedge rst_i) begin
