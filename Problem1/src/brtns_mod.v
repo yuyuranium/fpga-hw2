@@ -13,4 +13,17 @@ module brtns_mod (
   output      timeout_o
 );
 
+  reg [4:0] counter;
+
+  assign on_pwm_o = counter < brtns_i;
+  assign timeout_o = &counter;
+
+  always @(posedge clk_i or posedge rst_i) begin
+    if (rst_i) begin
+      counter <= 5'd0;
+    end else begin
+      counter <= (timeout_i)? counter + 5'd1 : counter;
+    end
+  end
+
 endmodule
