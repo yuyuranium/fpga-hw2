@@ -112,21 +112,21 @@ always@(posedge brtns_timeout or posedge rst)begin
     end
     else if(!cnt_mode)begin
         if(&brtns_cnt)begin
-            brtns_cnt <= brtns_cnt - timeout_cnt_done;
+            brtns_cnt <= brtns_cnt - {4'd0,timeout_cnt_done};
             cnt_mode <= 1'b1;
         end
         else begin
-            brtns_cnt <= brtns_cnt + timeout_cnt_done;
+            brtns_cnt <= brtns_cnt + {4'd0,timeout_cnt_done};
             cnt_mode <= 1'b0;
         end
     end
     else begin
         if(~|brtns_cnt)begin
-            brtns_cnt <= brtns_cnt + timeout_cnt_done;
+            brtns_cnt <= brtns_cnt + {4'd0,timeout_cnt_done};
             cnt_mode <= 1'b0;
         end
         else begin
-            brtns_cnt <= brtns_cnt - timeout_cnt_done;
+            brtns_cnt <= brtns_cnt - {4'd0,timeout_cnt_done};
             cnt_mode <= 1'b1;
         end
     end
