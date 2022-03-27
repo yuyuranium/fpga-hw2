@@ -45,15 +45,15 @@ always@(*)begin
     endcase
 end
 
-always@(posedge clk or posedge rst)begin
+always@(posedge brtns_timeout or posedge rst)begin
     if(rst)begin
         timeout_cnt <= 10'd0;
     end
     else begin
-        timeout_cnt <= ntimeout_cnt;
+        timeout_cnt <= timeout_cnt + 10'd1;
     end
 end
-always@(*)begin   
+/*always@(*)begin   
     if(brtns_timeout)begin
         if(timeout_cnt_done)begin
             ntimeout_cnt = 10'd0;
@@ -65,7 +65,7 @@ always@(*)begin
     else begin
         ntimeout_cnt = timeout_cnt;
     end
-end
+end*/
 
 /*always@(posedge clk or posedge rst)begin
     if(rst)begin
