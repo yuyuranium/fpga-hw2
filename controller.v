@@ -53,19 +53,21 @@ always@(posedge clk or posedge rst)begin
         timeout_cnt <= ntimeout_cnt;
     end
 end
-always@(*)begin
-    if(timeout_cnt_done)begin
-        ntimeout_cnt = 10'd0;
-    end
-    else if(brtns_timeout)begin
-        ntimeout_cnt = timeout_cnt + 10'd1;
+always@(*)begin   
+    if(brtns_timeout)begin
+        if(timeout_cnt_done)begin
+            ntimeout_cnt = 10'd0;
+        end
+        else begin
+            ntimeout_cnt = timeout_cnt + 10'd1;
+        end
     end
     else begin
         ntimeout_cnt = timeout_cnt;
     end
 end
 
-always@(posedge clk or posedge rst)begin
+/*always@(posedge clk or posedge rst)begin
     if(rst)begin
         brtns_cnt <= 5'd0;
     end
@@ -101,6 +103,33 @@ always@(posedge clk or posedge rst)begin
     else begin
     end
 end
+*/
 
+always@(posedge brtns_timeout or posedge rst)begin
+    if(rst)begin
+        brtns_cnt <= 5'd0;
+        cnt_mode <= 1'b0;
+    end
+    else if(!cnt_mode)begin
+        if(&brtns_cnt)begin
+            brtns_cnt <= brtns_cnt - 5'd1;
+            cnt_mode <= 1'b1;
+        end
+        else begin
+            brtns_cnt <= brtns_cnt + 5'd1;
+            cnt_mode <= 1'b0;
+        end
+    end
+    else begin
+        if(~|brtns_cnt)begin
+            brtns_cnt <= brtns_cnt + 5'd1;
+            cnt_mode <= 1'b0;
+        end
+        else begin
+            brtns_cnt <= brtns_cnt - 5'd1;
+            cnt_mode <= 1'b1;
+        end
+    end
+end
 
 endmodule
