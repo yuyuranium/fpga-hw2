@@ -1,6 +1,6 @@
-module controller (clk, rst, SW,
+module controller (rst, SW,
                    color, brightness,
-                   brtns_timeout,
+                   brtns_timeout
                   );
 
 parameter PURPLE = 24'h7F1FFF;
@@ -9,15 +9,15 @@ parameter YELLOW = 24'hFFFF00;
 parameter CRIMSON = 24'hFF00FF;
 
 
-input clk, rst;
+input rst;
 input [1:0] SW;
 input brtns_timeout;
 output reg [23:0] color;
 output  [4:0] brightness;
 
 
-reg [9:0] timeout_cnt, ntimeout_cnt;
-reg [4:0] brtns_cnt, nbrtns_cnt;
+reg [9:0] timeout_cnt;
+reg [4:0] brtns_cnt;
 reg cnt_mode;
 wire timeout_cnt_done;
 
