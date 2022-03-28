@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Mar 28 09:11:18 2022
+[*]
+[dumpfile] "/mnt/c/Users/user/Desktop/FPGA/fpga-hw2/Problem2/src/top.vcd"
+[dumpfile_mtime] "Mon Mar 28 09:04:40 2022"
+[dumpfile_size] 15306320694
+[savefile] "/mnt/c/Users/user/Desktop/FPGA/fpga-hw2/Problem2/src/debug.gtkw"
+[timestart] 4
+[size] 1536 793
+[pos] -1 -1
+*0.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.top.
+[sst_width] 214
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 220
+@25
+top.top.ctrl.state[2:0]
+top.top.ctrl.timeout_cnt[9:0]
+top.top.ctrl.brtns_cnt[4:0]
+top.top.ctrl.cnt_mode
+top.top.ctrl.change_state
+[pattern_trace] 1
+[pattern_trace] 0
