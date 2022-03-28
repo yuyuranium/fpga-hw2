@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   }
   top->rst_i = 0;
 
-  for (int i = 0; i < 40000000; ++i) {
+  for (;;) {
     contextp->timeInc(4);
     top->eval();
     top->clk_i = !top->clk_i;

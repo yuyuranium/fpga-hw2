@@ -41,9 +41,10 @@ module top (
   );
 
   initial begin
-    $monitor("color = 0x%x, brtns = %d", color, brtns);
-    $dumpfile("top.vcd");
-    $dumpvars;
+    $monitor("color = 0x%x, brtns = %d, state = %d, change_state = %d", color, brtns, ctrl.state, ctrl.change_state);
+    $monitor("state = %d, change_state = %d", ctrl.state, ctrl.change_state);
+    /* $dumpfile("top.vcd"); */
+    /* $dumpvars; */
   end
 
 endmodule
