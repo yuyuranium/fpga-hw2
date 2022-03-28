@@ -33,7 +33,7 @@ wire change_state;
 
 assign brightness = brtns_cnt;
 assign timeout_cnt_done = &timeout_cnt;
-assign change_state = (~|brtns_cnt && &timeout_cnt && cnt_mode )? 1'b1 : 1'b0;
+assign change_state = (~|brtns_cnt && timeout_cnt_done && cnt_mode )? 1'b1 : 1'b0;
 
 always@(posedge brtns_timeout or posedge rst)begin
     if(rst)begin
@@ -127,8 +127,8 @@ always@(posedge brtns_timeout or posedge rst)begin
     end
     else if(!cnt_mode)begin
         if(&brtns_cnt)begin
-            brtns_cnt <= brtns_cnt - {4'd0,timeout_cnt_done};
-            cnt_mode <= 1'b1;
+            brtns_cnt <= brtns_cnt;
+            cnt_mode <= (timeout_cnt_done)? 1'b1 : 1'b0;
         end
         else begin
             brtns_cnt <= brtns_cnt + {4'd0,timeout_cnt_done};
@@ -137,8 +137,8 @@ always@(posedge brtns_timeout or posedge rst)begin
     end
     else begin
         if(~|brtns_cnt)begin
-            brtns_cnt <= brtns_cnt + {4'd0,timeout_cnt_done};
-            cnt_mode <= 1'b0;
+            brtns_cnt <= brtns_cnt;
+            cnt_mode <= (timeout_cnt_done)?1'b0:1'b1;
         end
         else begin
             brtns_cnt <= brtns_cnt - {4'd0,timeout_cnt_done};
