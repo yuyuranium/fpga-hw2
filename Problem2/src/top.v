@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 `include "color_mixer.v"
 `include "brtns_mod.v"
 `include "controller.v"

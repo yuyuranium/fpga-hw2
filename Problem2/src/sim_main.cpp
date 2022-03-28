@@ -13,14 +13,14 @@ int main(int argc, char *argv[])
   top->rst_i = 1;
 
   for (int i = 0; i < 2; ++i) {
-    contextp->timeInc(1);
+    contextp->timeInc(4);
     top->eval();
     top->clk_i = !top->clk_i;
   }
   top->rst_i = 0;
 
   for (int i = 0; i < 40000000; ++i) {
-    contextp->timeInc(1);
+    contextp->timeInc(4);
     top->eval();
     top->clk_i = !top->clk_i;
   }
