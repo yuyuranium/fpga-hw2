@@ -1,4 +1,11 @@
-# linter config
+# LSP config
+.cache
+compile_commands.json
+
+# Verilator outputs
+obj_dir
+
+# Linter config
 .svlint.toml
 .svls.toml
 
