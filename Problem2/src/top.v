@@ -20,7 +20,7 @@ module top (
     .rst          (rst_i),
     .color        (color),
     .brightness   (brtns),
-    .brtns_timeout(clk_i)
+    .brtns_timeout(brtns_timeout)
   );
 
   color_mixer mixer (
